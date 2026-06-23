@@ -80,12 +80,14 @@ section{padding:96px 0;border-top:1px solid var(--line)}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
 footer{border-top:1px solid var(--line);padding:80px 0 40px;background:var(--void)}
 .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:64px}
-.foot-logo{width:220px;max-width:62%;margin-bottom:18px}
+.foot-logo{width:220px;max-width:62%;height:auto;margin-bottom:18px}
 .foot-brand p{color:var(--smoke);font-family:var(--util);font-size:.8rem;text-transform:lowercase;max-width:30ch}
 .foot-col h4{font-family:var(--util);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vapor);margin-bottom:18px}
 .foot-col a,.foot-col p{display:block;color:var(--smoke);font-size:.9rem;margin-bottom:10px;transition:color .2s}.foot-col a:hover{color:var(--white)}
 .news-btn{display:inline-flex;align-items:center;gap:8px;background:var(--vapor);color:var(--ink);font-family:var(--util);font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:13px 20px;margin-top:6px;transition:background .2s}
 .news-btn:hover{background:var(--vapor-glow)}
+.news-btn{border:0;cursor:pointer}
+.ar-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);opacity:0}
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:28px;font-family:var(--util);font-size:.72rem;color:var(--smoke-2);letter-spacing:.04em;text-transform:lowercase;flex-wrap:wrap;gap:16px}
 .foot-bottom .socials{display:flex;gap:18px}.foot-bottom a:hover{color:var(--vapor)}
 .foot-bottom .powered{color:var(--smoke-2)}.foot-bottom .powered b{color:var(--vapor);font-weight:800;text-transform:uppercase;letter-spacing:.08em}

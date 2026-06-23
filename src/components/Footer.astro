@@ -1,7 +1,7 @@
 ---
-// NOTE: the original newsletter link had a typo ("newsletteer").
-// Corrected here — confirm this resolves to the right signup page.
-const NEWSLETTER_URL = 'https://arep.co/m/join-our-newsletter';
+// Newsletter signup is handled by the Audience Republic widget (campaign 15456).
+// Our on-brand "join the list" button triggers a hidden AR signup widget,
+// so the button keeps the site's styling and AR only renders the popup form.
 ---
 <footer id="contact">
   <div class="wrap">
@@ -19,7 +19,20 @@ const NEWSLETTER_URL = 'https://arep.co/m/join-our-newsletter';
       <div class="foot-col">
         <h4>on the list</h4>
         <p style="text-transform:none">first to know. nothing else.</p>
-        <a class="news-btn" href={NEWSLETTER_URL} target="_blank" rel="noopener">join the list &rarr;</a>
+        <button type="button" class="news-btn" id="joinListBtn" aria-haspopup="dialog">join the list &rarr;</button>
+
+        <!-- Hidden Audience Republic signup trigger (campaign 15456). The visible
+             button above forwards its click here so AR opens its popup form. -->
+        <div class="ar-hidden" aria-hidden="true">
+          <div
+            class="ar-register-button ar-widget-15456"
+            data-campaign-oid="15456"
+            data-widget-type="button"
+            data-widget-color="#ff7a18"
+            data-widget-text="Subscribe"
+            data-signup-form="true"
+          ></div>
+        </div>
       </div>
     </div>
     <div class="foot-bottom">
@@ -33,3 +46,27 @@ const NEWSLETTER_URL = 'https://arep.co/m/join-our-newsletter';
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  // Load the Audience Republic SDK once.
+  (function (id) {
+    if (document.getElementById(id)) return;
+    var s = document.createElement('script');
+    s.id = id;
+    s.src = 'https://sdk-cdn.arep.co/prod/v1.0.7/sdk.min.js';
+    s.async = true;
+    document.head.appendChild(s);
+  })('ar-jssdk');
+
+  // Forward the on-brand "join the list" button to the hidden AR trigger,
+  // so AR opens its signup popup while our button keeps the site styling.
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('#joinListBtn');
+    if (!btn) return;
+    e.preventDefault();
+    var ar =
+      document.querySelector('.ar-widget-15456.ar-register-button') ||
+      document.querySelector('.ar-widget-15456');
+    if (ar) ar.click();
+  });
+</script>
