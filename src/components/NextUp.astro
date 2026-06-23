@@ -12,6 +12,7 @@ const { next } = Astro.props as { next: GearyEvent | null };
           <div class="next-body">
             <p class="next-date"><time datetime={next.iso}>{next.dow} / {next.label}</time></p>
             <h3 class="next-name">{next.name}</h3>
+            {next.presenter && <p class="next-by">presented by {next.presenter}</p>}
             <a href={next.url} class="btn btn--solid">tickets <span class="arw">&rarr;</span></a>
           </div>
         </>

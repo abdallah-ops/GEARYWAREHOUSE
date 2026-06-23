@@ -12,7 +12,10 @@ const { events } = Astro.props as { events: GearyEvent[] };
             <span class="ev-date">
               <time datetime={e.iso}>{e.label}</time><span class="dow">{e.dow}</span>
             </span>
-            <span class="ev-name">{e.name}</span>
+            <span class="ev-main">
+              <span class="ev-name">{e.name}</span>
+              {e.presenter && <span class="ev-by">presented by {e.presenter}</span>}
+            </span>
             <span class="ev-link">tickets &rarr;</span>
           </a>
         ))

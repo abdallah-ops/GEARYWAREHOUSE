@@ -10,7 +10,7 @@
 
 const FEED_URL = import.meta.env.PUBLIC_EVENTS_FEED_URL || 'https://sheetdb.io/api/v1/89vcb4t2iqrej';
 
-const COLS = { date: '', name: '', url: '', meta: '' }; // optional exact header overrides
+const COLS = { date: '', name: '', url: '', meta: '', presenter: '' }; // optional exact header overrides
 
 // Fallback only — shown if the feed can't load.
 const SAMPLE: RawRow[] = [{ date: '2026-06-20', name: 'Noiyse Project', url: '#' }];
@@ -26,6 +26,7 @@ export interface GearyEvent {
   name: string;
   url: string;
   meta: string;
+  presenter: string; // organizer / "presented by" name, if provided in the sheet
   label: string; // "jun 20"
   dow: string; // "fri"
 }
@@ -88,9 +89,15 @@ function normalize(raw: RawRow[]): GearyEvent[] {
         name: String(pick(r, COLS.name, ['event', 'name', 'title', 'artist', 'lineup'])).trim(),
         url: String(pick(r, COLS.url, ['ticket', 'url', 'link', 'buy', 'rsvp'])).trim() || '#',
         meta: String(pick(r, COLS.meta, ['time', 'door', 'info', 'detail'])).trim(),
+        presenter: String(
+          pick(r, COLS.presenter, ['present', 'hosted', 'host', 'organiz', 'promoter', 'curat'])
+        ).trim(),
       };
     })
-    .filter((e): e is { date: Date; name: string; url: string; meta: string } => !!e.date && !!e.name)
+    .filter(
+      (e): e is { date: Date; name: string; url: string; meta: string; presenter: string } =>
+        !!e.date && !!e.name
+    )
     .sort((a, b) => a.date.getTime() - b.date.getTime())
     .map((e) => ({
       ...e,
