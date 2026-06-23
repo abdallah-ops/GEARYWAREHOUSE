@@ -1,0 +1,24 @@
+---
+import type { GearyEvent } from '../lib/events';
+const { events } = Astro.props as { events: GearyEvent[] };
+---
+<section id="events">
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">/ 01</span><h2>Upcoming</h2></div>
+    <div class="events-feed">
+      {events.length ? (
+        events.map((e) => (
+          <a class="ev" href={e.url}>
+            <span class="ev-date">
+              <time datetime={e.iso}>{e.label}</time><span class="dow">{e.dow}</span>
+            </span>
+            <span class="ev-name">{e.name}</span>
+            <span class="ev-link">tickets &rarr;</span>
+          </a>
+        ))
+      ) : (
+        <div class="ev-empty">more dates dropping soon.</div>
+      )}
+    </div>
+  </div>
+</section>

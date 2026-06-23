@@ -1,0 +1,32 @@
+---
+// First set carries descriptive alt text; the duplicated set (for the
+// seamless marquee loop) is decorative (empty alt) so screen readers
+// don't read every image twice.
+const shots = [
+  { src: '/assets/img/g1.jpg', alt: 'Crowd packed shoulder to shoulder on the main floor' },
+  { src: '/assets/img/g2.jpg', alt: 'Performer lit by a single warm spotlight' },
+  { src: '/assets/img/g3.jpg', alt: 'Wide view of the warehouse room mid-set' },
+  { src: '/assets/img/g4.jpg', alt: 'DJ working the booth under low light' },
+  { src: '/assets/img/g5.jpg', alt: 'Hands in the air as the room peaks' },
+  { src: '/assets/img/g6.jpg', alt: 'Silhouettes against the stage haze' },
+  { src: '/assets/img/g7.jpg', alt: 'Close crowd energy near the speaker stacks' },
+  { src: '/assets/img/g8.jpg', alt: 'A moment on the floor, mid-show' },
+];
+---
+<section class="gallery" id="gallery">
+  <div class="sec-head">
+    <span class="idx">/ 03</span>
+    <h2>On the Floor</h2>
+    <a href="https://instagram.com/gearywarehouse" class="label" style="margin-left:auto" target="_blank" rel="noopener">@gearywarehouse &rarr;</a>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track">
+      {shots.map((s) => (
+        <img src={s.src} alt={s.alt} width="608" height="380" loading="lazy" />
+      ))}
+      {shots.map((s) => (
+        <img src={s.src} alt="" aria-hidden="true" width="608" height="380" loading="lazy" />
+      ))}
+    </div>
+  </div>
+</section>

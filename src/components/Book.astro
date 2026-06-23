@@ -1,0 +1,19 @@
+---
+const BOOK_EMAIL = 'gawp.events@gmail.com';
+const subject = encodeURIComponent('Booking inquiry — Geary Warehouse');
+const body = encodeURIComponent(
+  'Event type:\nPreferred date(s):\nExpected headcount:\nWhat you have in mind:\n'
+);
+---
+<section id="book" style="text-align:center">
+  <div class="wrap">
+    <span class="label label--vapor">/ private bookings</span>
+    <h2 class="display" style="font-size:clamp(2rem,6vw,4.5rem);margin:22px 0 26px">Bring it to<br />the warehouse</h2>
+    <p style="color:var(--smoke);max-width:46ch;margin:0 auto 32px;font-family:var(--util);font-size:.9rem;text-transform:lowercase">
+      album launches / brand activations / private events / film shoots / whatever doesn't fit anywhere else.
+    </p>
+    <a href={`mailto:${BOOK_EMAIL}?subject=${subject}&body=${body}`} class="btn btn--solid">
+      request a date <span class="arw">&rarr;</span>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+import type { GearyEvent } from '../lib/events';
+const { next } = Astro.props as { next: GearyEvent | null };
+---
+<section id="next" style="border-top:none">
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">/ now</span><h2>Next Up</h2></div>
+    <div class="next">
+      {next ? (
+        <>
+          <div class="next-ghost" aria-hidden="true">{next.date.getDate()}</div>
+          <div class="next-body">
+            <p class="next-date"><time datetime={next.iso}>{next.dow} / {next.label}</time></p>
+            <h3 class="next-name">{next.name}</h3>
+            <a href={next.url} class="btn btn--solid">tickets <span class="arw">&rarr;</span></a>
+          </div>
+        </>
+      ) : (
+        <div class="next-body">
+          <p class="next-meta">no upcoming dates listed right now — check back soon.</p>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

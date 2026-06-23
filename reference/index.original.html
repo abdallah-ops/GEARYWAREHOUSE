@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a"><title>Geary Warehouse — Toronto</title>
+<meta name="description" content="Toronto's home for the underground. 209 Geary Ave.">
+<style>
+@font-face{font-family:'PP Neue Machina';src:url(./assets/fonts/PPNeueMachina-Light.woff2) format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'PP Neue Machina';src:url(./assets/fonts/PPNeueMachina-Regular.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'PP Neue Machina';src:url(./assets/fonts/PPNeueMachina-Ultrabold.woff2) format('woff2');font-weight:800;font-display:swap}
+:root{--void:#0a0a0a;--ink:#000;--vapor:#ff7a18;--vapor-glow:#ff9a4d;--white:#f2f1ee;--smoke:#8c8a85;--line:#1c1c1c;--display:'PP Neue Machina',sans-serif;--body:'PP Neue Machina',sans-serif;--util:'PP Neue Machina',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--white);font-family:var(--body);font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.label{font-family:var(--util);font-weight:400;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke)}
+.label--vapor{color:var(--vapor)}
+.display{font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.9}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(to bottom,rgba(0,0,0,.88),rgba(0,0,0,0));backdrop-filter:blur(2px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand-logo{height:30px;width:auto;opacity:.95}
+.nav-links{display:flex;align-items:center;font-family:var(--util);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--smoke)}
+.nav-links a{padding:0 13px;transition:color .2s}.nav-links a:hover{color:var(--white)}.nav-links span{color:var(--line)}
+.nav-cta{border:1px solid var(--vapor);color:var(--vapor);padding:9px 16px;font-family:var(--util);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:all .2s;margin-left:14px}
+.nav-cta:hover{background:var(--vapor);color:var(--ink)}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:8vh;overflow:hidden;background:var(--ink)}
+.hero-bg{position:absolute;inset:0;background-image:url(./assets/img/hero.jpg);background-size:cover;background-position:center 38%;z-index:0}
+.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(0,0,0,.94) 0%,rgba(0,0,0,.55) 36%,rgba(0,0,0,.2) 66%,rgba(0,0,0,.5) 100%),linear-gradient(to right,rgba(0,0,0,.75),rgba(0,0,0,0) 58%)}
+.hero-inner{position:relative;z-index:2;width:100%}
+.hero-eyebrow{display:flex;gap:16px;align-items:center;margin-bottom:26px}.hero-eyebrow span{width:42px;height:1px;background:var(--vapor)}
+.hero-title{font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.88;color:var(--white);font-size:clamp(2.9rem,11vw,9rem);margin-bottom:30px;text-shadow:0 2px 50px rgba(0,0,0,.55)}
+.hero-sub{font-family:var(--util);font-weight:400;font-size:clamp(.85rem,1.8vw,1.05rem);color:#cfcdc8;text-transform:lowercase;letter-spacing:.02em;max-width:48ch;margin-bottom:38px}
+.hero-sub b{color:var(--white);font-weight:400}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{font-family:var(--util);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding:15px 26px;transition:all .2s;display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:0}
+.btn--solid{background:var(--vapor);color:var(--ink);font-weight:800}.btn--solid:hover{background:var(--vapor-glow)}
+.btn--ghost{border:1px solid rgba(255,255,255,.35);color:var(--white);backdrop-filter:blur(2px)}.btn--ghost:hover{border-color:var(--white)}
+.btn .arw{transition:transform .2s}.btn:hover .arw{transform:translateX(4px)}
+section{padding:96px 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:48px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.8rem);line-height:1;letter-spacing:-.01em}
+.sec-head .idx{font-family:var(--util);color:var(--vapor);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+.next{position:relative;border:1px solid var(--line);padding:56px 44px;overflow:hidden;min-height:230px}
+.next-ghost{position:absolute;right:2%;top:50%;transform:translateY(-50%);font-family:var(--display);font-weight:800;font-size:clamp(8rem,26vw,21rem);line-height:.75;color:transparent;-webkit-text-stroke:1px #202020;letter-spacing:-.04em;pointer-events:none;user-select:none}
+.next-body{position:relative;z-index:2;display:flex;flex-direction:column;gap:16px;max-width:62ch}
+.next-date{font-family:var(--util);color:var(--vapor);letter-spacing:.14em;text-transform:uppercase;font-size:.84rem}
+.next-name{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(2rem,6vw,4rem);line-height:.92;letter-spacing:-.02em}
+.next-meta{font-family:var(--util);color:var(--smoke);font-size:.84rem;text-transform:lowercase;letter-spacing:.02em}
+.next-body .btn{margin-top:8px;align-self:flex-start}
+#events-feed{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.ev{display:grid;grid-template-columns:160px 1fr auto;align-items:center;gap:24px;padding:26px 10px;border-bottom:1px solid var(--line);position:relative;transition:background .2s,padding .2s}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--vapor);transition:width .2s}
+.ev:hover{background:#0b0b0b;padding-left:22px}.ev:hover::before{width:3px}
+.ev-date{font-family:var(--util);color:var(--vapor);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.ev-date .dow{color:var(--smoke);margin-left:10px}
+.ev-name{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(1.05rem,2.4vw,1.7rem);line-height:1;letter-spacing:-.01em}
+.ev-link{font-family:var(--util);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);display:flex;align-items:center;gap:8px;white-space:nowrap;transition:color .2s}
+.ev:hover .ev-link{color:var(--vapor)}
+.ev-empty{padding:30px 10px;color:var(--smoke);font-family:var(--util);font-size:.9rem;text-transform:lowercase}
+.room{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.room-copy h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(1.8rem,4.5vw,3.2rem);line-height:.92;margin-bottom:24px;letter-spacing:-.01em}
+.room-copy p{color:var(--smoke);font-size:1.02rem;max-width:42ch;margin-bottom:16px}.room-copy p b{color:var(--white);font-weight:400}
+.specs{border-top:1px solid var(--line)}
+.spec{display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--line);font-family:var(--util);font-size:.84rem}
+.spec .k{color:var(--smoke);text-transform:uppercase;letter-spacing:.1em}
+.spec .v{color:var(--white);text-align:right;text-transform:uppercase;letter-spacing:.04em}.spec .v b{color:var(--vapor);font-weight:800}
+.gallery{padding:96px 0;border-top:1px solid var(--line)}
+.gallery .sec-head{padding:0 28px;max-width:1240px;margin:0 auto 40px}
+.marquee{position:relative;overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.marquee-track{display:flex;gap:14px;width:max-content;animation:scroll 70s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee img{height:380px;width:auto;object-fit:cover;filter:grayscale(.25) contrast(1.04) brightness(.9);transition:filter .35s}
+.marquee img:hover{filter:none}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
+footer{border-top:1px solid var(--line);padding:80px 0 40px;background:var(--void)}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:64px}
+.foot-logo{width:220px;max-width:62%;margin-bottom:18px}
+.foot-brand p{color:var(--smoke);font-family:var(--util);font-size:.8rem;text-transform:lowercase;max-width:30ch}
+.foot-col h4{font-family:var(--util);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vapor);margin-bottom:18px}
+.foot-col a,.foot-col p{display:block;color:var(--smoke);font-size:.9rem;margin-bottom:10px;transition:color .2s}.foot-col a:hover{color:var(--white)}
+.news-btn{display:inline-flex;align-items:center;gap:8px;background:var(--vapor);color:var(--ink);font-family:var(--util);font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:13px 20px;margin-top:6px;transition:background .2s}
+.news-btn:hover{background:var(--vapor-glow)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:28px;font-family:var(--util);font-size:.72rem;color:#555;letter-spacing:.04em;text-transform:lowercase;flex-wrap:wrap;gap:16px}
+.foot-bottom .socials{display:flex;gap:18px}.foot-bottom a:hover{color:var(--vapor)}
+.foot-bottom .powered{color:var(--smoke)}.foot-bottom .powered b{color:var(--vapor);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+@media(max-width:880px){.nav-links{display:none}.room{grid-template-columns:1fr;gap:40px}.foot-top{grid-template-columns:1fr;gap:36px}.next-ghost{opacity:.6}.marquee img{height:280px}}
+@media(max-width:600px){.wrap{padding:0 20px}section,.gallery{padding:72px 0}.gallery .sec-head{padding:0 20px}
+ .ev{grid-template-columns:1fr auto;row-gap:8px;column-gap:16px}.ev-date{grid-column:1/-1}.ev-name{grid-column:1/2;font-size:1.15rem}.ev-link{grid-column:2/3;grid-row:2;align-self:center}
+ .foot-bottom{justify-content:flex-start}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}*{scroll-behavior:auto}}
+:focus-visible{outline:2px solid var(--vapor);outline-offset:3px}
+</style></head><body>
+<header><div class="wrap nav">
+  <a href="#" aria-label="Geary"><img class="brand-logo" src="./assets/img/geary-logo.png" alt="Geary"></a>
+  <nav class="nav-links"><a href="#events">events</a><span>/</span><a href="#room">the room</a><span>/</span><a href="#book">book it</a><span>/</span><a href="#contact">find us</a><a href="#events" class="nav-cta">tickets</a></nav>
+</div></header>
+<section class="hero">
+  <div class="hero-bg"></div><div class="hero-scrim"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow"><span></span><p class="label label--vapor">warehouse / 209 geary ave / toronto</p></div>
+    <h1 class="hero-title">Geary<br>Warehouse</h1>
+    <p class="hero-sub">toronto's home for the underground. raw concrete / four-corner sound / open late. <b>one of the city's last real warehouse rooms.</b></p>
+    <div class="hero-cta"><a href="#events" class="btn btn--solid">see what's on <span class="arw">&rarr;</span></a><a href="#book" class="btn btn--ghost">host your event</a></div>
+  </div>
+</section>
+<section id="next" style="border-top:none">
+  <div class="wrap"><div class="sec-head"><span class="idx">/ now</span><h2>Next Up</h2></div>
+    <div class="next" id="next-feature"></div>
+  </div>
+</section>
+<section id="events">
+  <div class="wrap"><div class="sec-head"><span class="idx">/ 01</span><h2>Upcoming</h2></div>
+    <div id="events-feed"></div>
+  </div>
+</section>
+<section id="room"><div class="wrap room">
+  <div class="room-copy">
+    <span class="label label--vapor" style="display:block;margin-bottom:18px">/ 02 — the room</span>
+    <h2>One Room.<br>Four Corners.<br>No Frills.</h2>
+    <p>a working warehouse on toronto's grittiest creative strip — concrete, steel, and a system built to move a room. <b>recently re-rigged for sound, light, and a full kitchen.</b></p>
+    <p>main floor, mezzanine, patio. corporate buyout to all-night event — the room takes whatever you bring it.</p>
+    <a href="#book" class="btn btn--ghost" style="margin-top:14px;border-color:#2a2a2a">book the space <span class="arw">&rarr;</span></a>
+  </div>
+  <div class="specs">
+    <div class="spec"><span class="k">total capacity</span><span class="v"><b>256</b></span></div>
+    <div class="spec"><span class="k">main room</span><span class="v">160</span></div>
+    <div class="spec"><span class="k">mezzanine</span><span class="v">60</span></div>
+    <div class="spec"><span class="k">patio</span><span class="v">36</span></div>
+    <div class="spec"><span class="k">system</span><span class="v">kv2 k-rig / 4-corner</span></div>
+    <div class="spec"><span class="k">booth</span><span class="v">3&times; cdj-3000 / a9</span></div>
+    <div class="spec"><span class="k">kitchen</span><span class="v">full service</span></div>
+  </div>
+</div></section>
+<section class="gallery" id="gallery">
+  <div class="sec-head"><span class="idx">/ 03</span><h2>On the Floor</h2><a href="https://instagram.com/gearywarehouse" class="label" style="margin-left:auto">@gearywarehouse &rarr;</a></div>
+  <div class="marquee"><div class="marquee-track"><img src="./assets/img/g1.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g2.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g3.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g4.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g5.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g6.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g7.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g8.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g1.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g2.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g3.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g4.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g5.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g6.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g7.jpg" alt="geary night" loading="lazy"><img src="./assets/img/g8.jpg" alt="geary night" loading="lazy"></div></div>
+</section>
+<section id="book" style="text-align:center">
+  <div class="wrap"><span class="label label--vapor">/ private bookings</span>
+    <h2 class="display" style="font-size:clamp(2rem,6vw,4.5rem);margin:22px 0 26px">Bring it to<br>the warehouse</h2>
+    <p style="color:var(--smoke);max-width:46ch;margin:0 auto 32px;font-family:var(--util);font-size:.9rem;text-transform:lowercase">album launches / brand activations / private events / film shoots / whatever doesn't fit anywhere else.</p>
+    <a href="mailto:gawp.events@gmail.com" class="btn btn--solid">request a date <span class="arw">&rarr;</span></a>
+  </div>
+</section>
+<footer id="contact"><div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand"><img class="foot-logo" src="./assets/img/geary-logo.png" alt="Geary Warehouse"><p>209 geary avenue, toronto<br>toronto's home for the underground</p></div>
+    <div class="foot-col"><h4>visit</h4><a href="https://maps.google.com/?q=209+Geary+Ave+Toronto">209 geary ave &rarr;</a><p>open late, event nights</p><a href="mailto:gawp.events@gmail.com">gawp.events@gmail.com</a></div>
+    <div class="foot-col"><h4>on the list</h4><p style="text-transform:none">first to know. nothing else.</p>
+      <a class="news-btn" href="https://arep.co/m/join-our-newsletteer" target="_blank" rel="noopener">join the list &rarr;</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 geary avenue warehouse project</span>
+    <a class="powered" href="https://aftrdark.ca" target="_blank" rel="noopener">powered by <b>aftr dark</b></a>
+    <div class="socials"><a href="https://instagram.com/gearywarehouse">instagram</a><a href="https://soundcloud.com/gearyavewarehouseproject">soundcloud</a><a href="https://discord.com/invite/xvcbJp7vPZ">discord</a></div>
+  </div>
+</div></footer>
+<script>
+/* ============================================================
+   EVENTS — live from your Google Sheet via SheetDB.
+   Next Up + Upcoming both derive from this one feed.
+   Columns are auto-detected. If a column is ever grabbed wrong,
+   set its exact sheet header name in COLS below to override.
+   ============================================================ */
+const FEED_URL = "https://sheetdb.io/api/v1/89vcb4t2iqrej";
+const COLS = { date:"", name:"", url:"", meta:"" }; // optional exact header overrides
+
+const SAMPLE = [ /* fallback only, shown if the feed can't load */
+  {date:"2026-06-20", name:"Noiyse Project", url:"#"}
+];
+
+const MON=["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+const DOW=["sun","mon","tue","wed","thu","fri","sat"];
+function pick(row,override,needles){
+  if(override && row[override]!==undefined) return row[override];
+  const keys=Object.keys(row);
+  for(const n of needles){const k=keys.find(k=>k.toLowerCase().trim().includes(n));if(k&&String(row[k]).trim())return row[k];}
+  return "";
+}
+function parseDate(s){
+  if(!s)return null; s=String(s).trim();
+  let m=/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/.exec(s); if(m)return new Date(+m[1],+m[2]-1,+m[3]);
+  m=/^(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})$/.exec(s);
+  if(m){let a=+m[1],bb=+m[2],y=+m[3];if(y<100)y+=2000;let mo,da;if(a>12){da=a;mo=bb;}else{mo=a;da=bb;}return new Date(y,mo-1,da);}
+  let d=new Date(s); if(!isNaN(d))return d;
+  const y=new Date().getFullYear(); d=new Date(s+" "+y);
+  if(!isNaN(d)){const t=new Date();t.setHours(0,0,0,0);if((t-d)/86400000>31)d=new Date(s+" "+(y+1));return isNaN(d)?null:d;}
+  return null;
+}
+const fmt=d=>MON[d.getMonth()]+" "+d.getDate();
+const dow=d=>DOW[d.getDay()];
+function normalize(raw){
+  return raw.map(r=>({
+    _d:parseDate(pick(r,COLS.date,['date','when','day'])),
+    name:String(pick(r,COLS.name,['event','name','title','artist','lineup'])).trim(),
+    url:String(pick(r,COLS.url,['ticket','url','link','buy','rsvp'])).trim()||'#',
+    meta:String(pick(r,COLS.meta,['time','door','info','detail'])).trim()
+  })).filter(e=>e._d&&e.name).sort((a,b)=>a._d-b._d);
+}
+function upcoming(list){const t=new Date();t.setHours(0,0,0,0);return list.filter(e=>e._d>=t);}
+function renderNext(e){const el=document.getElementById('next-feature');
+  if(!e){el.innerHTML='<div class="next-body"><p class="next-meta">no upcoming dates listed right now — check back soon.</p></div>';return;}
+  
+  el.innerHTML=`<div class="next-ghost">${e._d.getDate()}</div><div class="next-body"><p class="next-date">${dow(e._d)} / ${fmt(e._d)}</p><h3 class="next-name">${e.name}</h3><a href="${e.url}" class="btn btn--solid">tickets <span class="arw">&rarr;</span></a></div>`;
+}
+function renderList(list){const el=document.getElementById('events-feed');
+  if(!list.length){el.innerHTML='<div class="ev-empty">more dates dropping soon.</div>';return;}
+  el.innerHTML=list.map(e=>`<a class="ev" href="${e.url}"><span class="ev-date">${fmt(e._d)}<span class="dow">${dow(e._d)}</span></span><span class="ev-name">${e.name}</span><span class="ev-link">tickets &rarr;</span></a>`).join('');
+}
+function paint(list){const up=upcoming(list);renderNext(up[0]);renderList(up.slice(1));}
+async function loadEvents(){
+  try{const r=await fetch(FEED_URL);const j=await r.json();const arr=Array.isArray(j)?j:(j.data||j.events||j.items||[]);const n=normalize(arr);if(n.length){paint(n);return;}}
+  catch(err){console.warn('Live feed failed, using fallback:',err);}
+  paint(normalize(SAMPLE));
+}
+loadEvents();
+
+</script></body></html>

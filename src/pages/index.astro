@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import NextUp from '../components/NextUp.astro';
+import Events from '../components/Events.astro';
+import Room from '../components/Room.astro';
+import Gallery from '../components/Gallery.astro';
+import Book from '../components/Book.astro';
+import Footer from '../components/Footer.astro';
+import { getEvents } from '../lib/events';
+
+// Server-rendered on demand, cached by ISR (see astro.config.mjs).
+const { next, rest, all } = await getEvents();
+const siteUrl = Astro.site?.href ?? 'https://gearywarehouse.vercel.app/';
+
+// --- Structured data (schema.org) ---
+const venue = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicVenue',
+  name: 'Geary Warehouse',
+  description: "Toronto's home for the underground — events, sound, and one of the city's last real warehouse rooms.",
+  url: siteUrl,
+  image: new URL('/assets/img/hero.jpg', siteUrl).href,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '209 Geary Ave',
+    addressLocality: 'Toronto',
+    addressRegion: 'ON',
+    addressCountry: 'CA',
+  },
+  maximumAttendeeCapacity: 256,
+  sameAs: [
+    'https://instagram.com/gearywarehouse',
+    'https://soundcloud.com/gearyavewarehouseproject',
+    'https://discord.com/invite/xvcbJp7vPZ',
+  ],
+};
+
+const eventLd = all.map((e) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: e.name,
+  startDate: e.iso,
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'MusicVenue',
+    name: 'Geary Warehouse',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '209 Geary Ave',
+      addressLocality: 'Toronto',
+      addressRegion: 'ON',
+      addressCountry: 'CA',
+    },
+  },
+  ...(e.url && e.url !== '#'
+    ? { offers: { '@type': 'Offer', url: e.url, availability: 'https://schema.org/InStock' } }
+    : {}),
+}));
+
+const jsonLd = [venue, ...eventLd];
+---
+<Base jsonLd={jsonLd}>
+  <Header />
+  <main id="main">
+    <Hero />
+    <NextUp next={next} />
+    <Events events={rest} />
+    <Room />
+    <Gallery />
+    <Book />
+  </main>
+  <Footer />
+</Base>
