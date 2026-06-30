@@ -98,3 +98,55 @@ footer{border-top:1px solid var(--line);padding:80px 0 40px;background:var(--voi
  .foot-bottom{justify-content:flex-start}}
 @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}*{scroll-behavior:auto}}
 :focus-visible{outline:2px solid var(--vapor);outline-offset:3px}
+
+/* === /04 The Space (video section) === */
+.space {
+  padding: 96px 0;
+  border-top: 1px solid var(--line);
+}
+.space .sec-head {
+  margin-bottom: 32px;
+}
+.video-container {
+  max-width: 440px;
+  margin: 0;
+  padding: 0;
+}
+.video-frame {
+  background: #111;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+.space-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+  border-radius: 3px;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+}
+.space-video:focus {
+  outline: 2px solid var(--vapor);
+  outline-offset: 3px;
+}
+@media(max-width:880px) {
+  .space { padding: 72px 0; }
+  .video-container {
+    max-width: none;
+    width: 100%;
+  }
+  .video-frame {
+    padding: 8px;
+  }
+}
+@media(max-width:600px) {
+  .video-container {
+    width: 100%;
+  }
+  .video-frame {
+    padding: 6px;
+  }
+}

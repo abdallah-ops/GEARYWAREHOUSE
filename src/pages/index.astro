@@ -6,6 +6,7 @@ import NextUp from '../components/NextUp.astro';
 import Events from '../components/Events.astro';
 import Room from '../components/Room.astro';
 import Gallery from '../components/Gallery.astro';
+import TheSpace from '../components/TheSpace.astro';
 import Book from '../components/Book.astro';
 import Footer from '../components/Footer.astro';
 import { getEvents } from '../lib/events';
@@ -70,6 +71,7 @@ const jsonLd = [venue, ...eventLd];
     <Events events={rest} />
     <Room />
     <Gallery />
+    <TheSpace />
     <Book />
   </main>
   <Footer />
